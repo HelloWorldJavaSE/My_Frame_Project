@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ShopController {
     private final JFrame frame;
     private final JPanel panel;
-    private final ArrayList<Component> parentsButton;
+    private final ArrayList<Component> parentsButton; // =  Catalog.getJButton, Cart.getJButton, Order.getJButton
     private final JButton back;
     private final AppView appView;
     private final ShopService shopService;
@@ -20,7 +20,7 @@ public class ShopController {
     public ShopController(AppView appView, ShopService shopService) {
         this.appView = appView;
         this.shopService = shopService;
-        frame = new JFrame("Shop");
+        frame = new JFrame(appView.title); // MainView.title = "Магазин"
         panel = new JPanel();
         frame.getContentPane().add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,6 +34,7 @@ public class ShopController {
         for (int i = 0; i < appView.children.size(); i++) {
             parentsButton.add(appView.children.get(i).getJButton());
         }
+        //Оброботчик нажатия на кнопку "Back" (Возрощает на начальный экран ((Catalog,Cart,Order + Back)))
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +48,8 @@ public class ShopController {
 
         new AllListener(panel,appView,shopService,back); // Класс Отвечающий за обработку нажатий
     }
-    private  void panelAdd(ArrayList<Component> jButtons){ //Метод для читабельности кода
+    //Метод для добавления ArrayList<Component> на панель
+    private  void panelAdd(ArrayList<Component> jButtons){
         for (int i = 0; i < jButtons.size(); i++) {
             panel.add(jButtons.get(i));
         }

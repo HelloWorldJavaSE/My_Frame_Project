@@ -7,13 +7,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class AddToCartView extends AppView {
-    final ShopService shopService;
 
-    public AddToCartView(ShopService shopService) {
+
+    public AddToCartView() {
         super("Add to cart",new ArrayList<>());
-        this.shopService = shopService;
     }
 
+
+    //Это то что будет выводиться на окно при нажатии на кнопку AddToCartView.getJButton
     @Override
     public ArrayList<Component> getChildrenArrButtons() {
         ArrayList<Component> arrayList = new ArrayList<>();
@@ -32,7 +33,7 @@ public class AddToCartView extends AppView {
         arrayList.add(jButton);
         return arrayList;
     }
-
+    //Метод для получения основной кнопки класса
     @Override
     public JButton getJButton() {
         JButton jButton = new JButton(title);

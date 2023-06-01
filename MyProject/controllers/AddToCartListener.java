@@ -14,8 +14,8 @@ public class AddToCartListener implements MouseListener {
     private final JPanel panel;
     private final AppView appView;
 
-    private final JButton back;
-    private final ShopService shopService;
+    private final JButton back; //Кнопка возрощающая нас на главный экран
+    private final ShopService shopService; // Используеться для добовления товара в корзину (shopService.addToCart)
 
 
     public AddToCartListener(JPanel panel, AppView appView,JButton back,ShopService shopService) {

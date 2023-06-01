@@ -8,9 +8,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MockCartDataSourceImpl extends CartDataSource{
-    //Реализуем весь минимум для работы установленый в абстрактном классе CartDataSource
-    private ArrayList<CartItem> cart = new ArrayList<>();
 
+    private ArrayList<CartItem> cart = new ArrayList<>(); // Корзина с товарами
+
+    //Метод для получения корзины с товарами
     @Override
     public ArrayList<Component> getCatalog() {
         ArrayList<Component> jText = new ArrayList<>();

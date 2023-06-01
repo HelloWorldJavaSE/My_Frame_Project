@@ -14,18 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    //Создания объектов и запуск программы
     public static void main(String[] args) {
-        CatalogDataSource catalogDataSource = new MockCatalogDataSourceImpl();
-        CartDataSource cartDataSource = new MockCartDataSourceImpl();
-        OrderDataSource orderDataSource = new MockOrderDataSourceImpl();
+        CatalogDataSource catalogDataSource = new MockCatalogDataSourceImpl(); //data_source Catalog
+        CartDataSource cartDataSource = new MockCartDataSourceImpl(); //data_source Cart
+        OrderDataSource orderDataSource = new MockOrderDataSourceImpl(); //data_source Order
+        //Главный класс для работы с данными
         ShopService shopService = new ShopService(catalogDataSource,cartDataSource,orderDataSource);
-        AddToCartView addToCartView = new AddToCartView(shopService);
+        //Визуал для Cart
         CartView cartView = new CartView(shopService);
-        CatalogView catalogView = new CatalogView(shopService,new ArrayList<>(List.of(addToCartView)));
-        OrderView orderView = new OrderView(shopService);
-        //Собираем все в едино
-        MainView mainView = new MainView(new ArrayList<>(List.of(catalogView,cartView,orderView)));
+        //Визуал для Catalog (+ AddToCartView)
+        CatalogView catalogView = new CatalogView(shopService,new ArrayList<>(List.of(new AddToCartView())));
+        //Главный соеденяющий всю View часть
+        MainView mainView = new MainView(new ArrayList<>(List.of(catalogView,cartView,new OrderView())));
 
+        //Главный контролер
         new ShopController(mainView,shopService).run();
     }
 }

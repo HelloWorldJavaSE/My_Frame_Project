@@ -8,7 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class CartDataSource {
-    //Устанавливаем самый минимум для всех CartDataSourceImpl
+
+    //Метод для получения корзины
     public abstract ArrayList<Component> getCatalog();
+    //Метод для добавления товар в корзину
     public abstract void addToCart(Product product);
 }

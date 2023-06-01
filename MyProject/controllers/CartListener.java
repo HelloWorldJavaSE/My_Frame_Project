@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 public class CartListener implements MouseListener {
     private final JPanel panel;
     private final AppView appView;
-    private final JButton back;
+    private final JButton back; //Кнопка возрощающая нас на главный экран
 
 
     public CartListener(JPanel panel, AppView appView,JButton back) {
@@ -24,7 +24,7 @@ public class CartListener implements MouseListener {
         panel.removeAll();
         panel.setVisible(false);
         panel.setVisible(true);
-        // appView.children.get(1).getChildrenArrButtons() == shopService.getCart
+        // Обходим CartView.getChildrenArrButtons() и добавляем его на панель
         for (int i = 0; i < appView.children.get(1).getChildrenArrButtons().size(); i++) {
            panel.add(appView.children.get(1).getChildrenArrButtons().get(i));
         }
